@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajat Kumar Mahaseth - Aeronautical Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* CSS Variables for easy customization */
+    :root {
+      --primary-color: #00eaff; /* Bright Cyan */
+      --secondary-color: #ff00ff; /* Magenta */
+      --dark-bg: #0f2027; /* Dark Blue-Gray */
+      --mid-bg: #203a43; /* Medium Blue-Gray */
+      --light-bg: #2c5364; /* Light Blue-Gray */
+      --text-color: #f1f1f1; /* Off-White */
+      --card-bg: rgba(255, 255, 255, 0.08); /* Slightly transparent white for sections */
+      --card-border: 1px solid rgba(0, 234, 255, 0.3); /* Cyan border for sections */
+      --card-shadow: 0 8px 30px rgba(0, 234, 255, 0.15); /* Soft cyan shadow for sections */
+      --gradient-text: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      --main-gradient: linear-gradient(135deg, var(--dark-bg), var(--mid-bg), var(--light-bg));
+
+      /* New variables for image cards */
+      --image-card-bg: rgba(255, 255, 255, 0.05); /* Slightly lighter transparent for image cards */
+      --image-card-border: 1px solid rgba(0, 234, 255, 0.2);
+      --image-card-shadow: 0 6px 20px rgba(0, 234, 255, 0.1);
+    }
+
+    /* Base Body Styles */
+    body {
+      background: var(--main-gradient);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+      line-height: 1.6;
+      position: relative; /* For pseudo-element background */
+      min-height: 100vh; /* Ensure body takes full viewport height */
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    /* Animated Background Effect */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(0, 234, 255, 0.15) 0%, transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.15) 0%, transparent 40%);
+      animation: gradientShift 20s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%, 100% 100%; }
+      100% { background-position: 100% 100%, 0% 0%; }
+    }
+
+    /* Header Styles */
+    header, footer {
+      background-color: rgba(15, 32, 39, 0.95);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Navigation Styles */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap; /* For responsiveness */
+    }
+
+    nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Section Spacing */
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+    }
+
+    /* Card Styles (for all sections) */
+    .card {
+      background: var(--card-bg);
+      border: var(--card-border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--card-shadow);
+      backdrop-filter: blur(5px); /* Frosted glass effect */
+      animation: fadeIn 1s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 234, 255, 0.25);
+    }
+
+    /* Heading Styles */
+    h1, h2, h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-top: 2rem;
+    }
+
+    /* Animated Text Gradient */
+    .animated-text {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+
+    /* About Section Specifics */
+    #about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile-img-container {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 0 20px rgba(0, 234, 255, 0.5), inset 0 0 10px rgba(0, 234, 255, 0.3);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img-container:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Your Name in About Section */
+    .about-name {
+      font-size: 2.2rem; /* Make the name prominent */
+      margin-top: 1rem; /* Space below the image */
+      margin-bottom: 2rem; /* Space before the first paragraph */
+      text-align: center;
+      letter-spacing: 1px; /* Slightly spread out letters */
+      text-shadow: 0 0 10px rgba(0, 234, 255, 0.5); /* Subtle glow */
+    }
+
+    /* Skills Section Specifics */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-item {
+      background: rgba(0, 234, 255, 0.05);
+      border: 1px solid rgba(0, 234, 255, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .skill-item:hover {
+      background-color: rgba(0, 234, 255, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .skill-item i {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Projects Section Specifics - Main project box */
+    .project-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 6px solid var(--primary-color);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      animation: fadeInUp 1s ease forwards;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Image Gallery Container */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+      border: var(--image-card-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--image-card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: var(--image-card-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px; /* Uniform height for gallery thumbnails */
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 234, 255, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video Player Styling */
+    .project-video {
+      width: 100%;
+      max-width: 700px; /* Adjust as needed */
+      margin: 1.5rem auto;
+      display: block; /* Center the video */
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      background-color: #000; /* Black background for video player */
+    }
+
+    /* Lightbox/Modal Styles */
+    .lightbox {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 100; /* Sit on top */
+      padding-top: 60px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain; /* Ensure image fits within the modal */
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
+    /* Close Button */
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Next/Previous buttons */
+    .prev-button, .next-button {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .next-button {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev-button:hover, .next-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+
+    /* Call to Action & CV Buttons */
+    .cta-button, .cv-button {
+      background-color: var(--primary-color);
+      color: var(--dark-bg);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 234, 255, 0.3);
+    }
+
+    .cta-button:hover, .cv-button:hover {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      box-shadow: 0 6px 15px rgba(255, 0, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Section Specifics */
+    .contact-info {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-info p i {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 234, 255, 0.2);
+    }
+
+    input, textarea {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      outline: none;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(0, 234, 255, 0.5);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Footer Styles */
+    footer {
+      font-size: 0.9rem;
+      margin-top: 3rem;
+      padding: 1rem;
+      border-top: 1px solid rgba(0, 234, 255, 0.2);
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.5rem; }
+
+      .about-name {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+        justify-content: center;
+      }
+
+      section {
+        padding: 2rem 1rem;
+        margin: 1.5rem auto;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+
+      .skill-item i {
+        font-size: 2rem;
+      }
+
+      .project-box {
+        padding: 1rem;
+      }
+
+      .gallery-item {
+        height: 80px; /* Adjust height for smaller screens */
+      }
+
+      .project-video {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.7rem; }
+      h3 { font-size: 1.3rem; }
+
+      .about-name {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+
+      .profile-img-container {
+        width: 140px;
+        height: 140px;
+      }
+
+      .cta-button, .cv-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .social-links a {
+        font-size: 1.8rem;
+      }
+
+      .gallery-item {
+        height: 60px; /* Further reduced height for very small screens */
+      }
+
+      .project-video {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="animated-text">Rajat Kumar Mahaseth</h1>
+    <nav>
+      <ul>
+        <li><a href="#about"><i class="fas fa-user-circle"></i> About</a></li>
+        <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="card">
+      <h2 class="animated-text"><i class="fas fa-user"></i> About Me</h2>
+      <div class="profile-img-container">
+        <img src="images/my-profile.jpg" alt="Rajat Kumar Mahaseth" class="profile-img">
+      </div>
+      <h3 class="animated-text about-name">Rajat Kumar Mahaseth</h3> 
+      <p>Hello! I'm Rajat Kumar Mahaseth, an Aeronautical Engineer passionate about innovative solutions in aerospace and beyond. My expertise lies in optimizing designs and leveraging cutting-edge technologies like computer vision for real-world applications. I am driven by a desire to contribute to advancements that make a tangible impact.</p>
+      <p>I thrive in challenging environments and constantly seek to expand my knowledge and skills. Whether it's enhancing the efficiency of wind turbines or developing sophisticated drone detection systems, I bring a detail-oriented approach and a commitment to excellence.</p>
+      <a href="rajat-kumar-mahaseth-resume.pdf" target="_blank" class="cv-button"><i class="fas fa-download"></i> Download CV</a>
+    </section>
+
+    <section id="skills" class="card">
+      <h2 class="animated-text"><i class="fas fa-cogs"></i> Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <i class="fas fa-plane"></i>
+          <span>Aerodynamics</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-microchip"></i>
+          <span>UAV Design</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-robot"></i>
+          <span>Computer Vision</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-wind"></i>
+          <span>Wind Energy</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-chart-line"></i>
+          <span>Data Analysis</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-code"></i>
+          <span>Python</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-drafting-compass"></i>
+          <span>CAD Software</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-brain"></i>
+          <span>Machine Learning</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2 class="animated-text"><i class="fas fa-flask"></i> Academic Projects</h2>
+
+      <div class="project-box">
+        <h3 class="animated-text">Optimizing Wind Turbine Performance</h3>
+        <p>This project delves into the optimization of wind turbine blades, specifically analyzing the impact of solidity on performance, particularly under low wind speed conditions. The study meticulously compares conventional blades with those incorporating flaps to assess their influence on the solidity factor. By strategically increasing rotor chord and modifying blade design, the core objective is to enhance wind turbine startup capabilities at low airspeeds—a crucial challenge in efficiently harnessing wind energy.</p>
+        
+        <h4>Project Images:</h4>
+        <div class="gallery-container" id="windTurbineGallery">
+          <div class="gallery-item" data-src="images/windturbine-project-1.jpg" data-caption="Wind Turbine Design Iteration 1">
+            <img src="images/windturbine-project-1.jpg" alt="Wind Turbine Image 1">
+          </div>
+          <div class="gallery-item" data-src="images/windturbine-project-2.jpg" data-caption="Aerodynamic Flow Simulation">
+            <img src="images/windturbine-project-2.jpg" alt="Wind Turbine Image 2">
+          </div>
+          <div class="gallery-item" data-src="images/windturbine-project-3.jpg" data-caption="Blade Manufacturing Process">
+            <img src="images/windturbine-project-3.jpg" alt="Wind Turbine Image 3">
+          </div>
+          <div class="gallery-item" data-src="images/windturbine-project-4.jpg" data-caption="Performance Testing Setup">
+            <img src="images/windturbine-project-4.jpg" alt="Wind Turbine Image 4">
+          </div>
+          <div class="gallery-item" data-src="images/windturbine-project-5.jpg" data-caption="Final Turbine Model">
+            <img src="images/windturbine-project-5.jpg" alt="Wind Turbine Image 5">
+          </div>
+        </div>
+      </div>
+
+      <div class="project-box">
+        <h3 class="animated-text">Drone Detection System using Computer Vision</h3>
+        <p>As drones become increasingly ubiquitous, there's a heightened necessity for robust detection and tracking mechanisms. Our project addresses this need by focusing on identifying quadcopters through advanced computer vision techniques. We meticulously trained a YOLOv12 model, achieving high accuracy in real-time drone spotting and following. This innovative approach presents a sophisticated and efficient solution for monitoring aerial threats, showcasing strong potential for deployment in critical surveillance and security applications.</p>
+
+        <h4>Project Video:</h4>
+        <video controls class="project-video">
+          <source src="videos/drone-detection-demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        
+        <h4>Project Images:</h4>
+        <div class="gallery-container" id="droneDetectionGallery">
+          <div class="gallery-item" data-src="images/drone-detection-1.jpg" data-caption="YOLOv12 Model Training">
+            <img src="images/drone-detection-1.jpg" alt="Drone Detection Image 1">
+          </div>
+          <div class="gallery-item" data-src="images/drone-detection-2.jpg" data-caption="Real-time Detection Interface">
+            <img src="images/drone-detection-2.jpg" alt="Drone Detection Image 2">
+          </div>
+          <div class="gallery-item" data-src="images/drone-detection-3.jpg" data-caption="Sample Detection Footage">
+            <img src="images/drone-detection-3.jpg" alt="Drone Detection Image 3">
+          </div>
+          <div class="gallery-item" data-src="images/drone-detection-4.jpg" data-caption="System Architecture Diagram">
+            <img src="images/drone-detection-4.jpg" alt="Drone Detection Image 4">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2 class="animated-text"><i class="fas fa-paper-plane"></i> Contact Me</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka, India</p>
+        <p><i class="fas fa-envelope"></i> rajatmahaseth44@gmail.com</p>
+        </div>
+      <div class="social-links">
+  <a href="https://www.linkedin.com/in/rajat-mahaseth-115151279/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/Rajat-mahaseth" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+  <a href="mailto:rajatmahaseth44@gmail.com" aria-label="Email"><i class="fas fa-at"></i></a>
+</div>
+      <form action="mailto:rajatmahaseth44@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit" class="cta-button">Send Message <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rajat Kumar Mahaseth | Bengaluru, Karnataka</p>
+  </footer>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close-button">&times;</span>
+    <img class="lightbox-content" id="lightboxImg">
+    <div class="lightbox-caption" id="caption"></div>
+    <a class="prev-button">&#10094;</a>
+    <a class="next-button">&#10095;</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const captionText = document.getElementById('caption');
+      const closeButton = document.querySelector('.close-button');
+      const prevButton = document.querySelector('.prev-button');
+      const nextButton = document.querySelector('.next-button');
+
+      let currentImages = [];
+      let currentIndex = 0;
+
+      galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const parentGallery = this.closest('.gallery-container');
+          if (parentGallery) {
+            currentImages = Array.from(parentGallery.querySelectorAll('.gallery-item')).map(el => ({
+              src: el.dataset.src,
+              caption: el.dataset.caption
+            }));
+            currentIndex = Array.from(parentGallery.children).indexOf(this);
+            openLightbox(currentIndex);
+          }
+        });
+      });
+
+      closeButton.addEventListener('click', closeLightbox);
+      prevButton.addEventListener('click', showPrevImage);
+      nextButton.addEventListener('click', showNextImage);
+
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard navigation (Escape, Left, Right arrows)
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.style.display === 'block') {
+          if (e.key === 'Escape') {
+            closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            showPrevImage();
+          } else if (e.key === 'ArrowRight') {
+            showNextImage();
+          }
+        }
+      });
+
+      function openLightbox(index) {
+        lightbox.style.display = 'block';
+        showImage(index);
+      }
+
+      function closeLightbox() {
+        lightbox.style.display = 'none';
+        currentImages = [];
+        currentIndex = 0;
+      }
+
+      function showImage(index) {
+        if (index < 0) {
+          currentIndex = currentImages.length - 1;
+        } else if (index >= currentImages.length) {
+          currentIndex = 0;
+        } else {
+          currentIndex = index;
+        }
+        
+        lightboxImg.src = currentImages[currentIndex].src;
+        captionText.innerHTML = currentImages[currentIndex].caption;
+      }
+
+      function showNextImage() {
+        showImage(currentIndex + 1);
+      }
+
+      function showPrevImage() {
+        showImage(currentIndex - 1);
+      }
+    });
+  </script>
+</body>
+</html>
